@@ -25,13 +25,13 @@ const ctx = canvas.getContext("2d");
 // ctx.lineTo(100, 300); // second point of the line
 // ctx.stroke();
 
-drawVerticalLine(100);
-drawVerticalLine(200);
+drawVerticalLine(size / 3);
+drawVerticalLine((2 * size) / 3);
 
-drawHorizontalLine(100);
-drawHorizontalLine(200);
+drawHorizontalLine(size / 3);
+drawHorizontalLine((2 * size) / 3);
 
-ctx.font = "50px serif";
+ctx.font = size / 6 + "px serif";
 ctx.textAlign = "center";
 ctx.textBaseline = "middle";
 
@@ -39,7 +39,7 @@ ctx.textBaseline = "middle";
 // drawMark(2, 0, "O");
 
 function drawWinningRowLine(row) {
-  const y = 50 + row * 100;
+  const y = size / 6 + row * (size / 3);
   drawHorizontalLine(y);
 }
 function drawHorizontalLine(y) {
@@ -49,7 +49,7 @@ function drawHorizontalLine(y) {
   ctx.stroke();
 }
 function drawWinningColLine(col) {
-  const x = 50 + col * 100;
+  const x = size / 6 + col * (size / 3);
   drawVerticalLine(x);
 }
 function drawVerticalLine(x) {
@@ -91,11 +91,11 @@ Row     Col     Midpoint of the cell (x_midpoint, y_midpoint)
 function drawMark(row, col, mark) {
   // x_midpoint depends on col
   // y_midpoint depends on row
-  const x_midpoint = 50 + col * 100; // 50, 150, 250
+  const x_midpoint = size / 6 + col * (size / 3); // 50, 150, 250
   // 0 => 50  = 50 + 0    = 50 + 0*100
   // 1 => 150 = 50 + 100  = 50 + 1*100
   // 2 => 250 = 50 + 200  = 50 + 2*100
-  const y_midpoint = 50 + row * 100; // 50, 150, 250
+  const y_midpoint = size / 6 + row * (size / 3); // 50, 150, 250
   ctx.fillText(mark, x_midpoint, y_midpoint);
 }
 
